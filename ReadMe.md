@@ -9,13 +9,20 @@ As a verification architect I
 
 ### pub
 
-[google scholar](https://scholar.google.com/citations?user=U0CkrxkAAAAJ&hl=en)
+See
+[google scholar](https://scholar.google.com/citations?user=U0CkrxkAAAAJ&hl=en) or
+[dblp](https://dblp.uni-trier.de/pid/54/1933.html).
 
 ### code
 
 tba (currently my recent work is sequestered in [ARM](https://www.arm.com), [QualComm](https://www.qualcomm.com), or [Ghost Automony](https://www.ghostautonomy.com) IP)
 
 ### misc
+
+Recent presentations include
+- "Update on the adoption of synchronous languages at gh.st", Synchron 2020, [slides](http://synchron2020.inria.fr/slides/thu_0900_engelhardt.pdf)
+- "Adventures in Verification Land for Glorified Ring Buffers", Synchron 2021, [slides](http://synchron2021.inria.fr/slides/synchron2021-engelhardt-1.pdf)
+- "Neural Net Validation - classical CS and high school maths to the rescue", Synchron 2021, [slides](http://synchron2021.inria.fr/slides/synchron2021-engelhardt-0.pdf)
 
 <!-- ## Life -->
 
