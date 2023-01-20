@@ -24,6 +24,8 @@ Recent presentations include
 - "Adventures in Verification Land for Glorified Ring Buffers", Synchron 2021, [slides](http://synchron2021.inria.fr/slides/synchron2021-engelhardt-1.pdf)
 - "Neural Net Validation - classical CS and high school maths to the rescue", Synchron 2021, [slides](http://synchron2021.inria.fr/slides/synchron2021-engelhardt-0.pdf)
 
+Errata for the data refinement book: [pdf](pubs/dRE1998/errata.pdf).
+
 <!-- ## Life -->
 
 <!-- ### lit -->
