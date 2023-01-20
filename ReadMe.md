@@ -34,5 +34,6 @@ Errata for the data refinement book: [pdf](pubs/dRE1998/errata.pdf).
 
 <!-- ### food -->
 
-<!-- ## Contact -->
+## Contact
 
+Email & Messages.app: `k` <digit one> `k` <digit two> `t` <at> `icloud` <dot> `com` (even the old `kaie` <at> `cse` <dot> `unsw` <dot> `edu` <dot> `au` could still work)
