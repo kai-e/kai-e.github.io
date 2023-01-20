@@ -10,8 +10,8 @@ As a verification architect I
 ### pub
 
 See
-[google scholar](https://scholar.google.com/citations?user=U0CkrxkAAAAJ&hl=en) or
-[dblp](https://dblp.uni-trier.de/pid/54/1933.html).
+[google scholar](https://scholar.google.com/citations?user=U0CkrxkAAAAJ&hl=en),
+[dblp](https://dblp.uni-trier.de/pid/54/1933.html), or my [local list](pubs/kai-e-pubs.html).
 
 ### code
 
