@@ -1,0 +1,41 @@
+% Problem number "69. Greatest Common Divisor Algorithm from the list
+% of the "top 100" of mathematical theorems - which nowadays serves as
+% some form of benchmark for theorem provers at
+% <https://www.cs.ru.nl/~freek/100/> - lacked a PVS formalisation
+% and proof.
+
+gcd2: THEORY
+
+BEGIN
+x,y,z: VAR posnat
+
+% axiomatic gcd, inspired by https://isabelle.in.tum.de/dist/library/HOL/HOL/GCD.html
+gcd(x,y): posnat
+gcd_dvd1: AXIOM divides(gcd(x,y),x)
+gcd_dvd2: AXIOM divides(gcd(x,y),y)
+gcd_greatest: AXIOM divides(z,x) IMPLIES divides(z,y) IMPLIES divides(z,gcd(x,y))
+
+% some simple properties that ought to follow
+gcd_eq:  LEMMA gcd(x,x) = x
+gcd_sym: LEMMA gcd(x,y) = gcd(y,x)
+gcd_stp: LEMMA x > y IMPLIES gcd(x,y) = gcd(x-y,y)
+gcd_stp2: LEMMA x < y IMPLIES gcd(x,y) = gcd(x,y-x)
+gcd_leq: LEMMA x >= gcd(x,y)
+
+% algorithmic gcd, Euclid's algorithm
+gcd2(x,y): RECURSIVE posnat =
+  TABLE
+  %--------+-------------+-------------++
+  |[ x = y | x > y       | ELSE        ]|
+  %--------+-------------+-------------++
+  | x      | gcd2(x-y,y) | gcd2(x,y-x) ||
+  %--------+-------------+-------------++
+  ENDTABLE
+  MEASURE x+y
+
+gcd2_h1: LEMMA x > y IMPLIES gcd2(x-y,y) = gcd(x-y,y) IMPLIES gcd2(x,y) = gcd(x,y)
+gcd2_h2: LEMMA x < y IMPLIES gcd2(x,y-x) = gcd(x,y-x) IMPLIES gcd2(x,y) = gcd(x,y)
+
+gcd2_eq_gcd: THEOREM gcd2(x,y) = gcd(x,y)
+
+END gcd2
