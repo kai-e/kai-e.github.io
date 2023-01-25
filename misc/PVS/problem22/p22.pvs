@@ -1,0 +1,8 @@
+p22: THEORY
+
+BEGIN
+
+continuum_not_denumerable: THEOREM
+  NOT EXISTS (f : [nat -> real]): surjective?(f)
+
+END p22
