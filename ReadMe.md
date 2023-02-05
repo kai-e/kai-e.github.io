@@ -26,7 +26,7 @@ Recent presentations include
 
 Errata for the data refinement book: [pdf](pubs/dRE1998/errata.pdf).
 
-A [formalisation and proof](misc/PVS/problem69) of problem 69 "Greatest Common Divisor Algorithm" in PVS.
+[Formalisations and proofs](misc/PVS/) of problems from the "100 list" in PVS.
 
 <!-- ## Life -->
 
