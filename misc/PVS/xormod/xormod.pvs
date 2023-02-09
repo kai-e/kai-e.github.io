@@ -1,0 +1,75 @@
+xormod: THEORY
+BEGIN
+  l,n,m: VAR nat
+  a,b,c: VAR nbit
+  xor_bit(b,c): nbit =
+   TABLE b, c
+        %+---+---++
+        |[ 0 | 1 ]|
+     %---+---+---++
+     | 0 | 0 | 1 ||
+     %---+---+---++
+     | 1 | 1 | 0 ||
+     %---+---+---++
+   ENDTABLE
+
+  xor_bit_comm: LEMMA
+    xor_bit(b,c) = xor_bit(c,b)
+  xor_bit_assoc: LEMMA
+    xor_bit(a,xor_bit(b,c)) = xor_bit(xor_bit(a,b),c)
+  xor_bit_cancel: LEMMA
+    xor_bit(b,b) = 0
+  xor_bit_zero0: LEMMA
+    xor_bit(b,0) = b
+  xor_bit_zero1: LEMMA
+    xor_bit(0,c) = c
+
+  xor_nat(n,m): RECURSIVE nat =
+    IF n = 0 THEN m
+    ELSIF m = 0 THEN n
+    ELSE LET n2 = ndiv(n,2), m2 = ndiv(m,2),
+             n0 = rem(2)(n), m0 = rem(2)(m)
+          IN xor_bit(n0,m0) + 2 * xor_nat(n2,m2)
+    ENDIF
+  MEASURE n+m
+
+  xor_nat_comm: LEMMA
+    xor_nat(n,m) = xor_nat(m,n)
+  xor_nat_assoc: LEMMA
+    xor_nat(l,xor_nat(n,m)) = xor_nat(xor_nat(l,n),m)
+  xor_nat_cancel: LEMMA
+    xor_nat(n,n) = 0
+  xor_nat_zero0: LEMMA
+    xor_nat(n,0) = n
+  xor_nat_zero1: LEMMA
+    xor_nat(0,m) = m
+  xor_nat_one_even: LEMMA
+    even?(n) IMPLIES xor_nat(n,1) = n+1
+  xor_nat_one_odd: LEMMA
+    odd?(n) IMPLIES xor_nat(n,1) = n-1
+  xor_nat_succ_even: LEMMA
+    even?(n) IMPLIES xor_nat(n,n+1) = 1
+  % xor_nat_succ_odd: LEMMA
+  %   odd?(n) IMPLIES xor_nat(n,n+1) = ??
+    
+  xor_iter(n): RECURSIVE nat =
+    IF n = 0 THEN 0
+    ELSE xor_nat(xor_iter(n-1),n)
+    ENDIF
+  MEASURE n
+
+  xor_iter_prop: LEMMA
+  LET m = rem(4)(n), x = xor_iter(n)
+   IN
+     TABLE
+       %-------+---------++
+       | m = 0 | x = n   ||
+       %-------+---------++
+       | m = 1 | x = 1   ||
+       %-------+---------++
+       | m = 2 | x = n+1 ||
+       %-------+---------++
+       | m = 3 | x = 0   ||
+       %-------+---------++
+     ENDTABLE
+END xormod

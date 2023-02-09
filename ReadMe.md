@@ -26,7 +26,7 @@ Recent presentations include
 
 Errata for the data refinement book: [pdf](pubs/dRE1998/errata.pdf).
 
-[Formalisations and proofs](misc/PVS/) of problems from the "100 list" in PVS.
+[Formalisations and proofs](misc/PVS/) of problems, e.g., from the "100 list" in [PVS](https://pvs.csl.sri.com/index.html).
 
 <!-- ## Life -->
 
