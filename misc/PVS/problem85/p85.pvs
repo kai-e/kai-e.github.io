@@ -1,0 +1,16 @@
+p85: THEORY
+BEGIN
+n: VAR nat
+
+sumdig(n): RECURSIVE nat =
+  LET d = ndiv(n,10), r = rem(10)(n)
+   IN r + IF d > 0 THEN sumdig(d) ELSE 0 ENDIF
+  MEASURE n
+
+ten_vs_three: LEMMA
+  rem(3)(n) = rem(3)(10 * n)
+sumdig_mod_three: LEMMA
+  rem(3)(sumdig(n)) = rem(3)(n)
+three_divides_nat: THEOREM
+  divides(3,n) IFF divides(3,sumdig(n))
+END p85
