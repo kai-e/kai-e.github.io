@@ -1,0 +1,37 @@
+M_D_aux[T: TYPE+]: THEORY
+
+BEGIN
+IMPORTING finite_sets@finite_sets_sum_real[T]
+IMPORTING finite_sets@finite_sets_product_real[finite_set[T]]
+
+a,b: VAR set[T]
+D: VAR finite_set[T]
+A,B,C: VAR finite_set[finite_set[T]]
+c,n: VAR nat
+x: VAR T
+
+M_D(a): [T -> nbit] =
+  b2n o a
+
+neg_M_D(a): [T -> nbit] =
+  b2n o (NOT) o a
+
+neg_is_minus: LEMMA
+  neg_M_D(a)(x) = 1 - M_D(a)(x)
+
+union_dual: LEMMA
+  M_D(union(a,b))(x) = 1 - neg_M_D(a)(x) * neg_M_D(b)(x)
+
+intersection_is_product: LEMMA
+  M_D(intersection(a,b))(x) = M_D(a)(x) * M_D(b)(x)
+
+M_D_sum: LEMMA
+  subset?(a,D) => card(a) = sum(D,M_D(a))
+
+union_dual3: LEMMA
+  M_D(Union(A))(x) = 1 - product(A,lambda a:neg_M_D(a)(x))
+
+intersection_is_product3: LEMMA
+  M_D(Intersection(A))(x) = product(A,lambda a:M_D(a)(x))
+
+END M_D_aux

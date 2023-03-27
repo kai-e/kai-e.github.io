@@ -1,0 +1,42 @@
+powerset_aux[T: TYPE+]: THEORY
+BEGIN
+A: VAR (nonempty?[T])
+G: VAR set[T]
+F: VAR non_empty_finite_set[T]
+B: VAR finite_set[T]
+
+
+disjoint_choose_rest: LEMMA
+  disjoint?(singleton(choose(A)), rest(A))
+
+union_choose_rest: LEMMA
+  union(singleton(choose(A)), rest(A)) = A
+
+add_choose_rest: LEMMA
+  add(choose(A), rest(A)) = A
+
+powerset_finite2: JUDGEMENT
+    powerset(B) HAS_TYPE finite_set[finite_set[T]]
+
+powerset_finite3: JUDGEMENT
+    powerset(B) HAS_TYPE non_empty_finite_set[finite_set[T]]
+
+powerset_im_add_c2pr_disjoint : LEMMA
+  disjoint?(powerset(rest(A)), image(lambda G: add(choose(A),G), powerset(rest(A))))
+
+powerset_rew: LEMMA
+  union(powerset(rest(A)), image(lambda G: add(choose(A),G), powerset(rest(A)))) = powerset(A)
+
+nv_sub_ss(G): set[set[T]] =
+  { A | subset?(A,G) }
+
+nv_sub_ss_powerset: LEMMA
+  remove(emptyset, powerset(A)) = nv_sub_ss(A)
+
+% nv_sub_ss_finite: JUDGEMENT
+%   nv_sub_ss(B) HAS_TYPE finite_set[finite_set[T]]
+
+nv_sub_ss_rest: LEMMA
+  union(nv_sub_ss(rest(A)), image(lambda G: add(choose(A),G), powerset(rest(A)))) = nv_sub_ss(A)
+
+END powerset_aux

@@ -1,0 +1,547 @@
+(M_D_aux
+ (neg_is_minus 0
+  (neg_is_minus-1 nil 3887767996 ("" (grind) nil nil)
+   ((neg_M_D const-decl "[T -> nbit]" M_D_aux nil)
+    (b2n const-decl "nbit" bit nil)
+    (O const-decl "T3" function_props nil)
+    (M_D const-decl "[T -> nbit]" M_D_aux nil))
+   shostak))
+ (union_dual 0
+  (union_dual-1 nil 3887768006 ("" (grind) nil nil)
+   ((nnint_times_nnint_is_nnint application-judgement "nonneg_int"
+     integers nil)
+    (even_times_int_is_even application-judgement "even_int" integers
+     nil)
+    (int_times_even_is_even application-judgement "even_int" integers
+     nil)
+    (M_D const-decl "[T -> nbit]" M_D_aux nil)
+    (member const-decl "bool" sets nil)
+    (union const-decl "set" sets nil) (b2n const-decl "nbit" bit nil)
+    (O const-decl "T3" function_props nil)
+    (neg_M_D const-decl "[T -> nbit]" M_D_aux nil))
+   shostak))
+ (intersection_is_product 0
+  (intersection_is_product-1 nil 3887768013 ("" (grind) nil nil)
+   ((nnint_times_nnint_is_nnint application-judgement "nonneg_int"
+     integers nil)
+    (even_times_int_is_even application-judgement "even_int" integers
+     nil)
+    (M_D const-decl "[T -> nbit]" M_D_aux nil)
+    (member const-decl "bool" sets nil)
+    (intersection const-decl "set" sets nil)
+    (b2n const-decl "nbit" bit nil)
+    (O const-decl "T3" function_props nil))
+   shostak))
+ (M_D_sum_TCC1 0
+  (M_D_sum_TCC1-1 nil 3888313880 ("" (use "finite_subset[T]") nil nil)
+   ((T formal-nonempty-type-decl nil M_D_aux nil)
+    (finite_subset formula-decl nil finite_sets nil))
+   nil (M_D_sum subtype "M_D_aux.a" "finite_set[T]")))
+ (M_D_sum 0
+  (M_D_sum-1 nil 3887768031
+   ("" (induct "D" :name "finite_set_induction_rest[T]")
+    (("1" (lemma "card_emptyset[T]")
+      (("1" (skolem-typepred)
+        (("1" (expand "subset?")
+          (("1" (ground)
+            (("1" (case "a!1 = emptyset[T]")
+              (("1" (grind) nil nil)
+               ("2" (hide 2) (("2" (grind-with-ext) nil nil)) nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil)
+     ("2" (skolem-typepred)
+      (("2" (ground)
+        (("2" (skolem-typepred)
+          (("2" (inst -2 "remove(choose(SS!1),a!1)")
+            (("2"
+              (case "subset?(a!1, SS!1) => subset?(remove(choose(SS!1), a!1), rest(SS!1))")
+              (("1" (ground)
+                (("1" (expand "sum" 2)
+                  (("1"
+                    (lemma "card_remove[T]"
+                     ("x" "choose(SS!1)" "S" "SS!1"))
+                    (("1" (ground)
+                      (("1"
+                        (lemma "card_remove[T]"
+                         ("x" "choose(SS!1)" "S" "a!1"))
+                        (("1" (expand "M_D")
+                          (("1" (expand "o ")
+                            (("1" (expand "b2n")
+                              (("1"
+                                (case "a!1(choose(SS!1))")
+                                (("1"
+                                  (replace -1 * LR t)
+                                  (("1"
+                                    (lemma
+                                     "sum_f_g"
+                                     ("S"
+                                      "rest(SS!1)"
+                                      "f"
+                                      "LAMBDA (x: T):
+                               IF remove(choose(SS!1), a!1)(x) THEN 1 ELSE 0 ENDIF"
+                                      "g"
+                                      "LAMBDA (x: T): IF a!1(x) THEN 1 ELSE 0 ENDIF"))
+                                    (("1"
+                                      (ground)
+                                      (("1"
+                                        (skolem-typepred)
+                                        (("1"
+                                          (case
+                                           "remove(choose(SS!1), a!1)(x!1) = a!1(x!1)")
+                                          (("1"
+                                            (replace -1 * LR)
+                                            (("1" (propax) nil nil))
+                                            nil)
+                                           ("2" (grind) nil nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil)
+                                 ("2"
+                                  (replace -1 * LR t)
+                                  (("2"
+                                    (lemma
+                                     "sum_f_g"
+                                     ("S"
+                                      "rest(SS!1)"
+                                      "f"
+                                      "LAMBDA (x: T):
+                               IF remove(choose(SS!1), a!1)(x) THEN 1 ELSE 0 ENDIF"
+                                      "g"
+                                      "LAMBDA (x: T): IF a!1(x) THEN 1 ELSE 0 ENDIF"))
+                                    (("2"
+                                      (ground)
+                                      (("2"
+                                        (skolem-typepred)
+                                        (("2" (grind) nil nil))
+                                        nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil)
+               ("2" (hide -2 3)
+                (("2" (expand "subset?")
+                  (("2" (ground)
+                    (("2" (skosimp)
+                      (("2" (expand "member")
+                        (("2" (expand "remove")
+                          (("2" (prop) (("2" (grind) nil nil)) nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil)
+     ("3" (hide 2)
+      (("3" (lemma "finite_subset[T]") (("3" (propax) nil nil)) nil))
+      nil))
+    nil)
+   ((finite_subset formula-decl nil finite_sets nil)
+    (non_empty_finite_set type-eq-decl nil finite_sets nil)
+    (NOT const-decl "[bool -> bool]" booleans nil) nil
+    (rest const-decl "set" sets nil)
+    (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
+     integers nil)
+    nil (int_minus_int_is_int application-judgement "int" integers nil)
+    (b2n const-decl "nbit" bit nil)
+    (real_ge_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil)
+    (/= const-decl "boolean" notequal nil)
+    (injective? const-decl "bool" functions nil)
+    (sum_f_g formula-decl nil finite_sets_sum finite_sets)
+    (IF const-decl "[boolean, T, T -> T]" if_def nil)
+    (O const-decl "T3" function_props nil)
+    (card_remove formula-decl nil finite_sets nil) nil
+    (subset_is_partial_order name-judgement "(partial_order?[set[T]])"
+     sets_lemmas nil)
+    (remove const-decl "set" sets nil)
+    (nonempty? const-decl "bool" sets nil)
+    (choose const-decl "(p)" sets nil)
+    (card_emptyset formula-decl nil finite_sets nil)
+    (emptyset const-decl "set" sets nil)
+    (member const-decl "bool" sets nil)
+    (empty? const-decl "bool" sets nil) nil nil
+    (finite_emptyset name-judgement "finite_set" finite_sets nil)
+    (finite_set_induction_rest formula-decl nil finite_sets_inductions
+     finite_sets)
+    (T formal-nonempty-type-decl nil M_D_aux nil)
+    (M_D const-decl "[T -> nbit]" M_D_aux nil)
+    (nbit type-eq-decl nil bit nil) (< const-decl "bool" reals nil)
+    (sum def-decl "R" finite_sets_sum finite_sets)
+    (+ const-decl "[numfield, numfield -> numfield]" number_fields nil)
+    (restrict const-decl "R" restrict nil)
+    (numfield nonempty-type-eq-decl nil number_fields nil)
+    (card const-decl "{n: nat | n = Card(S)}" finite_sets nil)
+    (Card const-decl "nat" finite_sets nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (>= const-decl "bool" reals nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (number nonempty-type-decl nil numbers nil)
+    (pred type-eq-decl nil defined_types nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (set type-eq-decl nil sets nil)
+    (is_finite const-decl "bool" finite_sets nil)
+    (finite_set type-eq-decl nil finite_sets nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (subset? const-decl "bool" sets nil)
+    (real_plus_real_is_real application-judgement "real" reals nil))
+   nil))
+ (union_dual3 0
+  (union_dual3-1 nil 3888315037
+   ("" (skolem-typepred)
+    (("" (expand "M_D")
+      (("" (expand "b2n")
+        (("" (expand "o")
+          (("" (expand "Union")
+            (("" (lift-if)
+              (("" (ground)
+                (("1" (skolem-typepred)
+                  (("1" (expand "extend")
+                    (("1" (ground)
+                      (("1" (expand "restrict")
+                        (("1" (lemma "neg_is_minus")
+                          (("1" (lemma "product_eq_funs")
+                            (("1" (inst?)
+                              (("1"
+                                (inst
+                                 -1
+                                 "lambda (s: finite_set[T]): 1 - M_D(s)(x!1)")
+                                (("1"
+                                  (ground)
+                                  (("1"
+                                    (replace -1 * LR t)
+                                    (("1"
+                                      (lemma
+                                       "product_x"
+                                       ("x"
+                                        "a!1"
+                                        "S"
+                                        "A!1"
+                                        "f"
+                                        "LAMBDA (s: finite_set[T]): 1 - M_D(s)(x!1)"))
+                                      (("1"
+                                        (ground)
+                                        (("1"
+                                          (replace -1 * LR t)
+                                          (("1"
+                                            (case "M_D(a!1)(x!1) = 1")
+                                            (("1" (grind) nil nil)
+                                             ("2" (grind) nil nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil)
+                                   ("2"
+                                    (hide 2)
+                                    (("2" (grind) nil nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil)
+                 ("2" (expand "restrict")
+                  (("2" (lemma "product_eq_funs")
+                    (("2"
+                      (inst -1 "A!1"
+                       "LAMBDA (s: finite_set[T]): neg_M_D(s)(x!1)"
+                       "LAMBDA (s: finite_set[T]): 1 - M_D(s)(x!1)")
+                      (("2" (ground)
+                        (("1" (replace -1 * LR t)
+                          (("1" (case "FORALL (a: (A!1)): NOT a(x!1)")
+                            (("1" (hide 1)
+                              (("1"
+                                (lemma
+                                 "product_eq_funs"
+                                 ("S"
+                                  "A!1"
+                                  "f"
+                                  "LAMBDA (s: finite_set[T]): 1 - M_D(s)(x!1)"
+                                  "g"
+                                  "LAMBDA (s: finite_set[T]): 1"))
+                                (("1"
+                                  (lemma
+                                   "product_const"
+                                   ("S" "A!1" "c" "1"))
+                                  (("1"
+                                    (ground)
+                                    (("1"
+                                      (replace -1 * LR t)
+                                      (("1"
+                                        (replace -1 * LR t)
+                                        (("1"
+                                          (lemma "expt_1i")
+                                          (("1" (grind) nil nil))
+                                          nil))
+                                        nil))
+                                      nil)
+                                     ("2"
+                                      (hide 2)
+                                      (("2" (grind) nil nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil)
+                             ("2" (hide 3) (("2" (grind) nil nil))
+                              nil))
+                            nil))
+                          nil)
+                         ("2" (hide 2 3)
+                          (("2" (use "neg_is_minus")
+                            (("2" (grind) nil nil)) nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil))
+    nil)
+   (nil (M_D const-decl "[T -> nbit]" M_D_aux nil)
+    (O const-decl "T3" function_props nil)
+    (finite_extend application-judgement "finite_set[T]"
+     extend_set_props nil)
+    (product_const formula-decl nil finite_sets_product_real
+     finite_sets)
+    (expt_1i formula-decl nil exponentiation nil)
+    (card const-decl "{n: nat | n = Card(S)}" finite_sets nil)
+    (Card const-decl "nat" finite_sets nil)
+    (expt def-decl "real" exponentiation nil)
+    (^ const-decl "real" exponentiation nil)
+    (posnat_expt application-judgement "posnat" exponentiation nil)
+    (minus_int_is_int application-judgement "int" integers nil)
+    (posint_exp application-judgement "posint" exponentiation nil)
+    (extend const-decl "R" extend nil)
+    (FALSE const-decl "bool" booleans nil)
+    (setof type-eq-decl nil defined_types nil)
+    (int_times_int_is_int application-judgement "int" integers nil)
+    (neg_is_minus formula-decl nil M_D_aux nil)
+    (number nonempty-type-decl nil numbers nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (>= const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (< const-decl "bool" reals nil) (nbit type-eq-decl nil bit nil)
+    (neg_M_D const-decl "[T -> nbit]" M_D_aux nil) nil
+    (* const-decl "[numfield, numfield -> numfield]" number_fields nil)
+    (product_x formula-decl nil finite_sets_product finite_sets)
+    (injective? const-decl "bool" functions nil)
+    (/= const-decl "boolean" notequal nil)
+    (member const-decl "bool" sets nil)
+    (remove const-decl "set" sets nil)
+    (empty? const-decl "bool" sets nil)
+    (= const-decl "[T, T -> boolean]" equalities nil) nil
+    (real_ge_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (odd_minus_odd_is_even application-judgement "even_int" integers
+     nil)
+    (- const-decl "[numfield, numfield -> numfield]" number_fields nil)
+    (numfield nonempty-type-eq-decl nil number_fields nil)
+    (product_eq_funs formula-decl nil finite_sets_product_real
+     finite_sets)
+    (restrict const-decl "R" restrict nil)
+    (int_minus_int_is_int application-judgement "int" integers nil)
+    (Union const-decl "set" sets nil) (b2n const-decl "nbit" bit nil)
+    (finite_set type-eq-decl nil finite_sets nil)
+    (is_finite const-decl "bool" finite_sets nil)
+    (set type-eq-decl nil sets nil)
+    (T formal-nonempty-type-decl nil M_D_aux nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (boolean nonempty-type-decl nil booleans nil))
+   shostak))
+ (intersection_is_product3 0
+  (intersection_is_product3-1 nil 3888308362
+   ("" (skolem-typepred)
+    (("" (expand "Intersection")
+      ((""
+        (lemma "product_eq_funs"
+         ("S" "A!1" "f" "LAMBDA (s: finite_set[T]): M_D(s)(x!1)" "g"
+          "LAMBDA (s: finite_set[T]): 1"))
+        (("" (lemma "expt_1i")
+          (("" (lemma "product_const" ("S" "A!1" "c" "1"))
+            (("" (expand "restrict")
+              (("" (expand "M_D")
+                (("" (expand "b2n")
+                  (("" (expand "o")
+                    (("" (lift-if)
+                      (("" (ground)
+                        (("1" (replace -2 * LR t)
+                          (("1" (replace -2 * LR t)
+                            (("1" (grind) nil nil)) nil))
+                          nil)
+                         ("2" (skolem-typepred)
+                          (("2"
+                            (lemma "product_x"
+                             ("x" "a!1" "S" "A!1" "f"
+                              "LAMBDA (s: finite_set[T]): IF s(x!1) THEN 1 ELSE 0 ENDIF"))
+                            (("1" (replace -3 * LR t)
+                              (("1"
+                                (replace -3 * LR t)
+                                (("1"
+                                  (inst?)
+                                  (("1"
+                                    (replace -3 * LR t)
+                                    (("1"
+                                      (beta -1)
+                                      (("1" (ground) nil nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil)
+                             ("2" (grind) nil nil))
+                            nil))
+                          nil)
+                         ("3" (grind) nil nil)
+                         ("4" (case "EXISTS (a:(A!1)): NOT a(x!1)")
+                          (("1" (hide 1 3)
+                            (("1" (skolem-typepred)
+                              (("1"
+                                (lemma
+                                 "product_x"
+                                 ("x"
+                                  "a!1"
+                                  "S"
+                                  "A!1"
+                                  "f"
+                                  "LAMBDA (s: finite_set[T]): IF s(x!1) THEN 1 ELSE 0 ENDIF"))
+                                (("1"
+                                  (replace -1 * LR t)
+                                  (("1"
+                                    (beta 2)
+                                    (("1"
+                                      (lift-if 2)
+                                      (("1" (grind) nil nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil)
+                           ("2" (grind) nil nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil))
+    nil)
+   ((Intersection const-decl "set" sets nil)
+    (expt_1i formula-decl nil exponentiation nil)
+    (restrict const-decl "R" restrict nil)
+    (b2n const-decl "nbit" bit nil)
+    (/= const-decl "boolean" notequal nil)
+    (remove const-decl "set" sets nil)
+    (even_times_int_is_even application-judgement "even_int" integers
+     nil)
+    (A!1 skolem-const-decl "finite_set[finite_set[T]]" M_D_aux nil)
+    (a!1 skolem-const-decl
+     "(extend[setof[T], finite_set[T], bool, FALSE](A!1))" M_D_aux nil)
+    (setof type-eq-decl nil defined_types nil)
+    (FALSE const-decl "bool" booleans nil)
+    (extend const-decl "R" extend nil)
+    (empty? const-decl "bool" sets nil)
+    (member const-decl "bool" sets nil)
+    (finite_remove application-judgement "finite_set[finite_set[T]]"
+     M_D_aux nil)
+    (nnint_times_nnint_is_nnint application-judgement "nonneg_int"
+     integers nil)
+    (finite_extend application-judgement "finite_set[T]"
+     extend_set_props nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (product_x formula-decl nil finite_sets_product finite_sets)
+    (IF const-decl "[boolean, T, T -> T]" if_def nil)
+    (numfield nonempty-type-eq-decl nil number_fields nil)
+    (* const-decl "[numfield, numfield -> numfield]" number_fields nil)
+    (minus_int_is_int application-judgement "int" integers nil)
+    (posnat_expt application-judgement "posnat" exponentiation nil)
+    (real_ge_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (^ const-decl "real" exponentiation nil)
+    (injective? const-decl "bool" functions nil)
+    (expt def-decl "real" exponentiation nil)
+    (card const-decl "{n: nat | n = Card(S)}" finite_sets nil)
+    (Card const-decl "nat" finite_sets nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (posint_exp application-judgement "posint" exponentiation nil)
+    (product_nat application-judgement "nat" M_D_aux nil)
+    (O const-decl "T3" function_props nil)
+    (product_const formula-decl nil finite_sets_product_real
+     finite_sets)
+    (product_eq_funs formula-decl nil finite_sets_product_real
+     finite_sets)
+    (number nonempty-type-decl nil numbers nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (>= const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (< const-decl "bool" reals nil) (nbit type-eq-decl nil bit nil)
+    (M_D const-decl "[T -> nbit]" M_D_aux nil)
+    (finite_set type-eq-decl nil finite_sets nil)
+    (is_finite const-decl "bool" finite_sets nil)
+    (set type-eq-decl nil sets nil)
+    (T formal-nonempty-type-decl nil M_D_aux nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (boolean nonempty-type-decl nil booleans nil))
+   shostak)))
+

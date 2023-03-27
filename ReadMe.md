@@ -4,8 +4,12 @@
 
 As a verification architect I
 - devise roadmaps for building trustworthy systems,
-- re-discover or create verification techniques tailored to these roadmaps, and
-- design and implement tool prototypes to aid in executing roadmaps.
+- re-discover or create verification techniques tailored to these roadmaps,
+- design and implement tool prototypes to aid in executing roadmaps, and
+- foster an engineering culture where trustworthiness of the product is a key ingredient.
+
+This typically means I do things differently to show what's possible, explain the costs/benefits of introducing more rigorous methods, and educate engineers how to do so, too.
+
 
 ### pub
 

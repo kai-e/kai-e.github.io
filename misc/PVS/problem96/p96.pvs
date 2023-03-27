@@ -1,0 +1,77 @@
+p96[T: TYPE+]: THEORY
+BEGIN
+ASSUMING
+  % not sure this is a good idea
+  finite_universe: ASSUMPTION is_finite_type[T]
+ENDASSUMING
+
+IMPORTING finite_sets@finite_sets_sum_real[T]
+IMPORTING finite_sets@finite_sets_sum[finite_set[finite_set[T]],real,0,+] AS FFS
+IMPORTING finite_sets@card_tricks
+IMPORTING real_aux[finite_set[T]]
+IMPORTING finite_sum_aux[T,finite_set[finite_set[T]]]
+IMPORTING finite_sum_aux2[T]
+IMPORTING finite_sum_aux2[finite_set[T]]
+IMPORTING M_D_aux[T]
+
+a,b: VAR finite_set[T]
+D: VAR non_empty_finite_set[T]
+A,B,C: VAR finite_set[finite_set[T]]
+c,n: VAR nat
+x: VAR T
+
+altcard(B): int =
+  (-1)^(card(B) + 1) * card(Intersection(B))
+
+% lemmas for the steps, mostly to find type problems
+e15_22_1: LEMMA
+  (FORALL (a: (A)): subset?(a, D)) IMPLIES
+  card(Union(A)) = sum(D,M_D(Union(A)))
+
+e15_22_2: LEMMA
+  (FORALL (a: (A)): subset?(a, D)) IMPLIES
+  sum(D,M_D(Union(A))) = sum(D,lambda x: 1 - product(A,lambda a:neg_M_D(a)(x)))
+
+e15_22_3: LEMMA
+  (FORALL (a: (A)): subset?(a, D)) AND D(x) IMPLIES
+    product(A,lambda a:neg_M_D(a)(x))
+  = FFS.sum(powerset(A), lambda B: (-1)^(card(B)) * product(B, lambda a: M_D(a)(x)))
+
+e15_22_3b: LEMMA
+  (FORALL (a: (A)): subset?(a, D)) AND D(x) IMPLIES
+    FFS.sum(powerset(A), lambda B: (-1)^(card(B)) * product(B, lambda a: M_D(a)(x)))
+  = FFS.sum(powerset(A), lambda B: (-1)^(card(B)) * M_D(Intersection(B))(x))
+
+e15_22_4: LEMMA
+  (FORALL (a: (A)): subset?(a, D)) IMPLIES
+    sum(D,lambda x: 1 - FFS.sum(powerset(A), lambda B: (-1)^(card(B)) * M_D(Intersection(B))(x)))
+  = card(D) - sum(D,lambda x: FFS.sum(powerset(A), lambda B: (-1)^(card(B)) * M_D(Intersection(B))(x)))
+
+e15_22_5: LEMMA
+  (FORALL (a: (A)): subset?(a, D)) IMPLIES
+    sum(D,lambda x: FFS.sum(powerset(A), lambda B: (-1)^(card(B)) * M_D(Intersection(B))(x)))
+  = sum(D,lambda x: FFS.sum(remove(emptyset,powerset(A)), lambda B: (-1)^(card(B)) * M_D(Intersection(B))(x)))
+  + sum(D,lambda x: sum(singleton(emptyset), lambda B: (-1)^(card(B)) * M_D(Intersection(B))(x)))
+  
+e15_22_6a: LEMMA
+  (FORALL (a: (A)): subset?(a, D)) IMPLIES
+    sum(D,lambda x: FFS.sum(remove(emptyset,powerset(A)), lambda B: (-1)^(card(B)) * M_D(Intersection(B))(x)))
+  = FFS.sum(remove(emptyset,powerset(A)), lambda B: (-1)^(card(B)) * sum(D,lambda x: M_D(Intersection(B))(x)))
+  
+e15_22_6b: LEMMA
+  (FORALL (a: (A)): subset?(a, D)) IMPLIES
+    sum(D,lambda x: sum(singleton(emptyset), lambda B: (-1)^(card(B)) * M_D(Intersection(B))(x)))
+  = card(D)
+
+e15_22_7: LEMMA
+  (FORALL (a: (A)): subset?(a, D)) IMPLIES
+    sum(D,lambda x: 1 - FFS.sum(powerset(A), lambda B: (-1)^(card(B)) * M_D(Intersection(B))(x)))
+  = FFS.sum(remove(emptyset,powerset(A)), lambda B: (-1)^(card(B) + 1) * sum(D,lambda x: M_D(Intersection(B))(x)))
+
+
+% 15.22 problem 96
+inclusion_exclusion: THEOREM
+  (FORALL (a: (A)): subset?(a, D)) IMPLIES
+  card(Union(A)) = FFS.sum(remove(emptyset,powerset(A)), altcard)
+
+END p96

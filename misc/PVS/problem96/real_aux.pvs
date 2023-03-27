@@ -1,0 +1,61 @@
+real_aux[D: TYPE+]: THEORY
+% EXPORTING e15_16 WITH CLOSURE
+BEGIN
+ASSUMING
+  % not sure this is a good idea
+  finite_universe: ASSUMPTION is_finite_type[D]
+ENDASSUMING
+
+IMPORTING finite_sets@finite_sets_product_real[D]
+% IMPORTING finite_sets@finite_sets_sum_real[finite_set[D]]
+IMPORTING powerset_aux[D]
+IMPORTING finite_sum_aux[set[D],set[D]] % should the 2nd be non_empty_finite_set[D]?
+IMPORTING finite_sum_aux2[set[D]]
+IMPORTING weak_ext2 % '2' for second attempt
+
+
+A,B: VAR finite_set[D]
+f: VAR [D -> real]
+x: VAR D
+
+n_f(f)(x): real = 1 - f(x)
+
+% proof step lemmas, hardly useful outside
+e15_16_1: LEMMA
+  nonempty?(A) =>
+  product(A,n_f(f)) = n_f(f)(choose(A)) * product(rest(A),n_f(f))
+
+e15_16_2: LEMMA
+  nonempty?(A) =>
+    f(choose(A)) * sum(powerset(rest(A)), lambda B: (-1)^(card(B)) * product(B,f))
+  = sum(powerset(rest(A)), lambda B: (-1)^(card(B)) * f(choose(A)) * product(B,f))
+
+e15_16_3: LEMMA
+  nonempty?(A) =>
+  - sum(powerset(rest(A)), lambda B: (-1)^(card(B)) * f(choose(A)) * product(B,f))
+  = sum(powerset(rest(A)), lambda B: (-1)^(card(B)+1) * f(choose(A)) * product(B,f))
+
+e15_16_4: LEMMA
+  nonempty?(A) =>
+    sum(powerset(rest(A)), lambda B: (-1)^(card(B)+1) * f(choose(A)) * product(B,f))
+  = sum(powerset(rest(A)), (lambda B: (-1)^(card(B)) * product(B,f)) o (lambda B: add(choose(A),B)))
+
+% e15_16_5: LEMMA
+%   nonempty?(A) =>
+%     sum(powerset(rest(A)), (lambda B: (-1)^(card(B)) * product(B,f)) o (lambda B: add(choose(A),B)))
+%   = sum(image(lambda B: add(choose(A),B), powerset(rest(A))),
+%         (lambda B: (-1)^(card(B)) * product(B,f)))
+
+e15_16_6: LEMMA
+  nonempty?(A) =>
+    sum(powerset(rest(A)), lambda B: (-1)^(card(B)) * product(B,f))
+  + sum(image(lambda B: add(choose(A),B), powerset(rest(A))),
+        lambda B: (-1)^(card(B)) * product(B,f))
+  = sum(powerset(A)      , lambda B: (-1)^(card(B)) * product(B,f))
+
+% somewhat useful
+e15_16: LEMMA
+  product(A,n_f(f)) =
+  sum(powerset(A), lambda B: (-1)^(card(B)) * product(B,f))
+
+END real_aux

@@ -1,0 +1,42 @@
+(weak_ext2
+ (weak_ext_half 0
+  (weak_ext_half-1 nil 3888003654 ("" (grind) nil nil)
+   ((A formal-subtype-decl nil weak_ext2 nil)
+    (A_pred const-decl "[T -> boolean]" weak_ext2 nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (T formal-nonempty-type-decl nil weak_ext2 nil)
+    (member const-decl "bool" sets nil)
+    (subset? const-decl "bool" sets nil))
+   shostak))
+ (weak_ext 0
+  (weak_ext-1 nil 3888003833
+   ("" (grind)
+    (("" (apply-extensionality 1 :hide? t)
+      (("" (iff) (("" (grind) nil nil)) nil)) nil))
+    nil)
+   ((T formal-nonempty-type-decl nil weak_ext2 nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (B_pred const-decl "[T -> boolean]" weak_ext2 nil)
+    (pred type-eq-decl nil defined_types nil)
+    (A_pred const-decl "[T -> boolean]" weak_ext2 nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (A formal-subtype-decl nil weak_ext2 nil)
+    (B formal-subtype-decl nil weak_ext2 nil))
+   shostak))
+ (set_comprehension_shift_type 0
+  (set_comprehension_shift_type-1 nil 3888372767
+   ("" (skolem-typepred)
+    (("" (apply-extensionality :hide? t) (("" (grind) nil nil)) nil))
+    nil)
+   ((T formal-nonempty-type-decl nil weak_ext2 nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (extend const-decl "R" extend nil)
+    (FALSE const-decl "bool" booleans nil)
+    (A formal-subtype-decl nil weak_ext2 nil)
+    (pred type-eq-decl nil defined_types nil)
+    (A_pred const-decl "[T -> boolean]" weak_ext2 nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil))
+   shostak)))
+

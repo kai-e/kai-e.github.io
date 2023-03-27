@@ -1,0 +1,44 @@
+weak_ext2[T: TYPE+, A: TYPE FROM T, B: TYPE FROM T]: THEORY
+BEGIN
+P: VAR pred[T]
+a: VAR A
+b: VAR B
+x: VAR T
+
+weak_ext_half: LEMMA
+  % (FORALL x: A_pred(x) AND P(x) => B_pred(x)) =>
+  % subset?({a | P(a)}, {b | P(b)})
+  (FORALL a: P(a) => B_pred(a)) =>
+  subset?({x | A_pred(x) AND P(x)}, {x | B_pred(x) AND P(x)})
+
+weak_ext: LEMMA
+  % (FORALL x: A_pred(x) AND P(x) => B_pred(x)) =>
+  % (FORALL x: B_pred(x) AND P(x) => A_pred(x)) =>
+  % {b | P(b)} = {a | P(a)}
+  (FORALL a: P(a) => B_pred(a)) AND (FORALL b: P(b) => A_pred(b)) =>
+  {x | A_pred(x) AND P(x)} = {x | B_pred(x) AND P(x)}
+
+% Can't have this:
+%
+% weak_ext2: LEMMA
+%   % (FORALL x: A_pred(x) AND P(x) => B_pred(x)) =>
+%   % (FORALL x: B_pred(x) AND P(x) => A_pred(x)) =>
+%   % {b | P(b)} = {a | P(a)}
+%   (FORALL a: P(a) => B_pred(a)) AND (FORALL b: P(b) => A_pred(b)) =>
+%   {x: A | P(x)} = {x: B | P(x)}
+%
+% because it generates an unprovable TCC:
+%
+% % Subtype TCC generated (at line 26, column 18) for  {x: B | P(x)}
+%     % expected type  [A -> bool]
+%   % unfinished
+% weak_ext2_TCC1: OBLIGATION
+%   FORALL (P: pred[T]):
+%     ((FORALL b: P(b) => A_pred(b)) AND FORALL a: P(a) => B_pred(a)) IMPLIES
+%      FORALL (x1: T): B_pred(x1) IFF A_pred(x1);
+
+set_comprehension_shift_type: LEMMA
+  {x | A_pred(x) AND P(x)} = {a | P(a)}
+
+
+END weak_ext2

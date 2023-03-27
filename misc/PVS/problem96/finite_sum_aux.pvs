@@ -1,0 +1,38 @@
+finite_sum_aux[D1, D2: TYPE+]: THEORY
+BEGIN
+IMPORTING finite_sets@finite_sets_sum_real[D1]
+IMPORTING finite_sets@finite_sets_sum_real[D2]
+
+X: VAR finite_set[D1]
+x: VAR D1
+Y: VAR finite_set[D2]
+y: VAR D2
+g: VAR [D1 -> D2]
+f: VAR [D2 -> real]
+h: VAR [D1 -> [D2 -> real]]
+
+sum_map_dom: LEMMA
+  injective?[(X), (image(g,X))](g) =>
+  sum(X, f o g) = sum(image(g,X), f)
+
+sum_swap: LEMMA
+  sum(X,lambda x: sum(Y, h(x))) = sum(Y, lambda y: sum(X, lambda x: h(x)(y)))
+
+END finite_sum_aux
+
+finite_sum_aux2[D: TYPE+]: THEORY
+BEGIN
+IMPORTING finite_sets@finite_sets_sum_real[D]
+
+A,B: VAR finite_set[D]
+f,g: VAR [D -> real]
+x: VAR D
+
+sum_distributive2: THEOREM
+  sum(A,f) - sum(A,g) = sum(A,(LAMBDA x: f(x) - g(x))) 
+
+sum_eq_doms: LEMMA
+  A = B => sum(A,f) = sum(B,f)
+END finite_sum_aux2
+
+
