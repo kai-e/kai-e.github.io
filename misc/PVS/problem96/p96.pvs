@@ -8,6 +8,7 @@ ENDASSUMING
 IMPORTING finite_sets@finite_sets_sum_real[T]
 IMPORTING finite_sets@finite_sets_sum[finite_set[finite_set[T]],real,0,+] AS FFS
 IMPORTING finite_sets@card_tricks
+IMPORTING powerset_aux[T]
 IMPORTING real_aux[finite_set[T]]
 IMPORTING finite_sum_aux[T,finite_set[finite_set[T]]]
 IMPORTING finite_sum_aux2[T]
