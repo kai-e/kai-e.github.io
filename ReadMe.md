@@ -32,6 +32,7 @@ Errata for the data refinement book: [pdf](pubs/dRE1998/errata.pdf).
 
 [Formalisations and proofs](misc/PVS/) of problems, e.g., from the "100 list" in [PVS](https://pvs.csl.sri.com/index.html).
 
+[Build instructions for PVS on ARM Macs](misc/PVS/ARMbuild/) (tested on M2, should be ok for M1, too).
 <!-- ## Life -->
 
 <!-- ### lit -->
