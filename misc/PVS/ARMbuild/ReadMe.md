@@ -6,7 +6,8 @@ I have Xcode, its command line utilities, [Emacs for Mac OS X](https://emacsform
 
 To use that emacs, set
 ```
-$ export PVSEMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
+$ export EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
+$ export PVSEMACS=$EMACS
 ```
 If you don't intend to use PVS with the emacs interface then you can do with
 ```
@@ -17,7 +18,9 @@ From memory I did (at least):
 ```
 $ brew install llvm sbcl
 ```
-and follow the _Caveats_ at the end.
+Follow the _Caveats_ at the end.
+
+NB: I do not know whether Apple's clang would be good enough.
 
 Clone both the PVS and the [SBCL](https://www.sbcl.org/) git repositories (say, into `~/src`). 
 ```
@@ -68,7 +71,7 @@ And now do something that helps PVS.
 ```
 $ export SBCL_HOME=$SBCLISP_HOME
 ```
-NB: Perhaps the sbcl install step above was redundant because it did not make available that precious `run-sbcl.sh` also missing from the brew-installed version. After this `sbcl` probably won't work in this shell.)
+NB: Perhaps the sbcl install step above was redundant because it did not make available that precious `run-sbcl.sh` also missing from the brew-installed version. After this `sbcl` probably won't work in this shell.
 
 ## Build PVS
 
