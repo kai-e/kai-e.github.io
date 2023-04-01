@@ -97,7 +97,7 @@ Even after confirming that we're using the brew-installed llvm and
 $ export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 $ export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 ```
-the same error persists. Why? Because `./configure` asks gcc for its version and gcc is from apple's cmd line tools! It detects the wrong version, `14.0.6_1` in my case. I do have `16.0.0` installed via homebrew. So in let's cheat with something like
+the same error persists. Why? Because `./configure` asks gcc for its version and `gcc` is from Apple's command line tools! It detects the wrong version, `14.0.6_1` in my case. I do have `16.0.0` installed via homebrew. So let's cheat with something like
 ```
 $ pushd
 $ cd /opt/homebrew/Cellar/llvm
@@ -161,12 +161,11 @@ Type HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.
 ```
 We can fix these easily with this [patch](0001-Fix-C-errors-for-the-SBCL-based-ARM-Mac-build.patch).
 
-After another `make` that should now succeed, we're ready to
+After another `make` -- that should now succeed -- we're ready to
 
 ## Test
 
 ```
 $ ./pvs -q # could append `-load-after ~/.emacs`
 ```
-
 
