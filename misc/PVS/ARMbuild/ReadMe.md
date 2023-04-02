@@ -16,11 +16,16 @@ $ brew install emacs
 
 From memory I did (at least):
 ```
-$ brew install llvm sbcl
+$ brew install llvm sbcl make
 ```
 Follow the _Caveats_ at the end.
+Ensure that GNU make is used, otherwise a couple of things in the (generated) Makefile(s) don't work as expected.
+```
+export MAKE=gmake
+```
+I must've been incredibly lucky when got through *one* compilation with Apple's make, because after that it got failures. Those went away when I started using `gmake` instead of `make`.
 
-NB: I do not know whether Apple's clang would be good enough.
+NB: I would like to know whether Apple's clang would be good enough. I don't think their make is.
 
 Clone both the PVS and the [SBCL](https://www.sbcl.org/) git repositories (say, into `~/src`). 
 ```
