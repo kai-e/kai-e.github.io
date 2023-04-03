@@ -5,30 +5,30 @@
 I have Xcode, its command line utilities, [Emacs for Mac OS X](https://emacsformacosx.com/), and [homebrew](https://brew.sh/) installed.
 
 To use that emacs, set
-```
+```console
 $ export EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
 $ export PVSEMACS=$EMACS
 ```
 If you don't intend to use PVS with the emacs interface then you can do with
-```
+```console
 $ brew install emacs
 ```
 
 From memory I did (at least):
-```
+```console
 $ brew install llvm sbcl make
 ```
 Follow the _Caveats_ at the end.
 Ensure that GNU make is used, otherwise a couple of things in the (generated) Makefile(s) don't work as expected.
-```
-export MAKE=gmake
+```console
+$ export MAKE=gmake
 ```
 I must've been incredibly lucky when got through *one* compilation with Apple's make, because after that it got failures. Those went away when I started using `gmake` instead of `make`.
 
 NB: I would like to know whether Apple's clang would be good enough. I don't think their make is.
 
 Clone both the PVS and the [SBCL](https://www.sbcl.org/) git repositories (say, into `~/src`). 
-```
+```console
 $ cd ~/src
 $ git clone git@github.com:SRI-CSL/PVS.git
 $ git clone git://git.code.sf.net/p/sbcl/sbcl
@@ -37,13 +37,13 @@ $ git clone git://git.code.sf.net/p/sbcl/sbcl
 ## Build SBCL
 
 Build and install that SBCL. I used
-```
+```console
 $ cd ~/src/sbcl
 $ sh make.sh --prefix=/Users/kaie/opt/sbcl --dynamic-space-size=4Gb
 $ sh install.sh
 ```
 (Iirc the `--prefix` didn't work with `~/opt/sbcl`.) Currently that succeeds with
-```
+```console
 //checking for leftover cold-init symbols
 Found 5:
 (#:*!DELAYED-DEFMETHOD-ARGS* #:!EARLY-GF-NAME #:!BOOTSTRAP-SET-SLOT
@@ -53,13 +53,13 @@ Found 5 fdefns named by uninterned symbols:
  #<SB-KERNEL:FDEFN #:!BOOTSTRAP-SET-SLOT>
  #<SB-KERNEL:FDEFN #:!BOOTSTRAP-SLOT-INDEX>
  #<SB-KERNEL:FDEFN #:!HAIRY-DATA-VECTOR-REFFER-INIT>)
- ```
+```
 near the end. Let's hope that that's not fatal.
 
 Install [quicklisp](https://www.quicklisp.org/beta/).
 
 Install PVS dependencies (found via trial and error).
-```
+```console
 $ export SBCLISP_HOME=~/src/sbcl
 $ export SBCL_HOME=~/opt/sbcl/lib/sbcl
 $ sbcl
@@ -73,7 +73,7 @@ $ sbcl
 * (exit)
 ```
 And now do something that helps PVS.
-```
+```console
 $ export SBCL_HOME=$SBCLISP_HOME
 ```
 NB: Perhaps the sbcl install step above was redundant because it did not make available that precious `run-sbcl.sh` also missing from the brew-installed version. After this `sbcl` probably won't work in this shell.
@@ -81,9 +81,9 @@ NB: Perhaps the sbcl install step above was redundant because it did not make av
 ## Build PVS
 
 with a few detours to keep track of the current issues.
-```
+```console
 $ cd ../PVS
-$ make clean && ./configure && make
+$ ./configure && gmake
 [...]
 ***** make-in-platform /Users/kaie/src/PVS/src/utils/ file_utils 2
 debugger invoked on a SIMPLE-ERROR in thread
@@ -98,19 +98,19 @@ make[1]: /opt/homebrew/Cellar/llvm/14.0.6_1/bin/ld64.lld: No such file or direct
 make[1]: *** [file_utils.dylib] Error 1
 ```
 Even after confirming that we're using the brew-installed llvm and
-```
+```console
 $ export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 $ export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 ```
 the same error persists. Why? Because `./configure` asks gcc for its version and `gcc` is from Apple's command line tools! It detects the wrong version, `14.0.6_1` in my case. I do have `16.0.0` installed via homebrew. So let's cheat with something like
-```
+```console
 $ pushd
 $ cd /opt/homebrew/Cellar/llvm
 $ ln -s 16.0.0 14.0.6_1
 $ popd
 ```
 We try again and run into some C errors:
-```
+```console
 $ make
 [...]
 ***** make-in-platform /Users/kaie/src/PVS/src/BDD/ mu 2
@@ -174,3 +174,8 @@ After another `make` -- that should now succeed -- we're ready to
 $ ./pvs -q # could append `-load-after ~/.emacs`
 ```
 
+## NASALIB
+
+The [NASALIB](https://shemesh.larc.nasa.gov/fm/pvs/PVS-library/) works with this.
+
+Current details [here](NASAlib.md).
