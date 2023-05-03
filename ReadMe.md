@@ -23,6 +23,8 @@ tba (currently my recent work is sequestered in [ARM](https://www.arm.com), [Qua
 
 ### misc
 
+The 2022 iteration of the [ACM Software System Award](https://awards.acm.org/software-system) goes to our team of authors of [seL4: formal verification of an OS kernel](https://doi.org/10.1145/1629575.1629596). [News Release](https://www.acm.org/media-center/2023/may/technical-awards-2022).
+
 Recent presentations include
 - "Update on the adoption of synchronous languages at gh.st", Synchron 2020, [slides](http://synchron2020.inria.fr/slides/thu_0900_engelhardt.pdf)
 - "Adventures in Verification Land for Glorified Ring Buffers", Synchron 2021, [slides](http://synchron2021.inria.fr/slides/synchron2021-engelhardt-1.pdf)
