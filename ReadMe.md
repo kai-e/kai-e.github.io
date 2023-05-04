@@ -8,7 +8,7 @@ As a verification architect I
 - design and implement tool prototypes to aid in executing roadmaps, and
 - foster an engineering culture where trustworthiness of the product is a key ingredient.
 
-This typically means I do things differently to show what's possible, explain the costs/benefits of introducing more rigorous methods, and educate engineers how to do so, too.
+This often means I do things somewhat differently. If that is the case and the cost/benefit trade-off looks promising, I help with educating engineers how to do things differently, too.
 
 
 ### pub
