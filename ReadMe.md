@@ -22,18 +22,19 @@ Recent presentations include
 - "Adventures in Verification Land for Glorified Ring Buffers", Synchron 2021, [slides](http://synchron2021.inria.fr/slides/synchron2021-engelhardt-1.pdf)
 - "Neural Net Validation - classical CS and high school maths to the rescue", Synchron 2021, [slides](http://synchron2021.inria.fr/slides/synchron2021-engelhardt-0.pdf)
 
-Errata for the data refinement book: [pdf](pubs/dRE1998/errata.pdf).
+Errata for ![the data refinement book](pics/dRE1998.gif "cover of the data refinement book")the data refinement book: [pdf](pubs/dRE1998/errata.pdf).
 
 
 ### Specs/Code/Proofs
 
-tba (currently my recent work is sequestered in [ARM](https://www.arm.com), [QualComm](https://www.qualcomm.com), or [Ghost Autonomy](https://www.ghostautonomy.com) IP)
+Most recent work is sequestered in [ARM](https://www.arm.com), [QualComm](https://www.qualcomm.com), or [Ghost Autonomy](https://techcrunch.com/2024/04/03/openai-backed-ghost-autonomy-shuts-down/) IP.
+
+[Formalisations and proofs](misc/PVS/) of problems, e.g., from the "100 list" in [PVS](https://pvs.csl.sri.com/index.html).
+
 
 ### Misc
 
 **News 2023/05/03:** The 2022 iteration of the [ACM Software System Award](https://awards.acm.org/software-system) goes to our team of authors of [seL4: formal verification of an OS kernel](https://doi.org/10.1145/1629575.1629596).
-
-[Formalisations and proofs](misc/PVS/) of problems, e.g., from the "100 list" in [PVS](https://pvs.csl.sri.com/index.html).
 
 **News 2023/04/03:** [Build instructions for PVS on ARM Macs](misc/PVS/ARMbuild/).
 <!-- ## Life -->
